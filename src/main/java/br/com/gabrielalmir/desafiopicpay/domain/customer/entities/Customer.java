@@ -1,6 +1,5 @@
 package br.com.gabrielalmir.desafiopicpay.domain.customer.entities;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.enums.AccountRole;
 import br.com.gabrielalmir.desafiopicpay.domain.customer.interfaces.Account;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,7 +29,5 @@ public abstract class Customer implements Account {
 
     private String password;
     private BigDecimal balance;
-
-    private AccountRole accountRole;
 }
 
