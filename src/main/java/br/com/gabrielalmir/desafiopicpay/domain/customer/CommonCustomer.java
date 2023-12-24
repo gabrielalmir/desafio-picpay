@@ -2,7 +2,7 @@ package br.com.gabrielalmir.desafiopicpay.domain.customer;
 
 import java.math.BigDecimal;
 
-import br.com.gabrielalmir.desafiopicpay.core.contract.Account;
+import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
 
 public class CommonCustomer extends Customer {
     @Override

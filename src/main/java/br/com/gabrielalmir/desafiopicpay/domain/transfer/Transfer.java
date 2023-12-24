@@ -3,7 +3,7 @@ package br.com.gabrielalmir.desafiopicpay.domain.transfer;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import br.com.gabrielalmir.desafiopicpay.core.contract.Transaction;
+import br.com.gabrielalmir.desafiopicpay.core.transfer.Transaction;
 import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

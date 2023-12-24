@@ -1,4 +1,4 @@
-package br.com.gabrielalmir.desafiopicpay.core.contract;
+package br.com.gabrielalmir.desafiopicpay.core.customer;
 
 import java.math.BigDecimal;
 import java.util.UUID;

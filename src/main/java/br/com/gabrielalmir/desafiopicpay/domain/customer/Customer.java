@@ -10,7 +10,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import br.com.gabrielalmir.desafiopicpay.core.contract.Account;
+import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
 
 @Entity(name = "customers")
 @Table(name = "customers")
