@@ -1,12 +1,13 @@
 package br.com.gabrielalmir.desafiopicpay.services.transfer;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.InstantaneousTransferToUsers;
+import br.com.gabrielalmir.desafiopicpay.domain.transfer.TransferToUsers;
 import br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy.TransferStrategy;
-import br.com.gabrielalmir.desafiopicpay.presentation.transfer.TransferDto;
+import br.com.gabrielalmir.desafiopicpay.presentation.dtos.TransferDto;
 import br.com.gabrielalmir.desafiopicpay.repository.transfer.TransferRepository;
 import br.com.gabrielalmir.desafiopicpay.services.customer.CustomerService;
 
@@ -14,12 +15,13 @@ import br.com.gabrielalmir.desafiopicpay.services.customer.CustomerService;
 public class TransferService {
     private final CustomerService customerService;
     private final TransferRepository transferRepository;
-    private final TransferStrategy transferStrategy;
 
-    public TransferService(CustomerService customerService, TransferRepository transferRepository, TransferStrategy transferStrategy) {
+    private final Map<String, TransferStrategy> transferStrategies;
+
+    public TransferService(CustomerService customerService, TransferRepository transferRepository, Map<String, TransferStrategy> transferStrategies) {
         this.customerService = customerService;
         this.transferRepository = transferRepository;
-        this.transferStrategy = transferStrategy;
+        this.transferStrategies = transferStrategies;
     }
 
     public void transfer(TransferDto transferDto) throws Exception {
@@ -29,7 +31,7 @@ public class TransferService {
 
         var isAuthorizedTransaction = authorizeTransaction();
 
-        var transfer = new InstantaneousTransferToUsers(fromCustomer, toCustomer, amount, transferStrategy);
+        var transfer = new TransferToUsers(fromCustomer, toCustomer, amount, transferStrategies.get(transferDto.type().name()));
         var isValidTransaction = transfer.validateTransaction(isAuthorizedTransaction);
 
         if (!isValidTransaction) {
