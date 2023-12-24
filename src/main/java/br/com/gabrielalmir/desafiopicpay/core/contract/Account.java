@@ -1,4 +1,4 @@
-package br.com.gabrielalmir.desafiopicpay.domain.customer.interfaces;
+package br.com.gabrielalmir.desafiopicpay.core.contract;
 
 import java.math.BigDecimal;
 

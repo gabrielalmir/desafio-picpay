@@ -1,6 +1,5 @@
-package br.com.gabrielalmir.desafiopicpay.domain.customer.entities;
+package br.com.gabrielalmir.desafiopicpay.domain.customer;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.interfaces.Account;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +9,8 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import br.com.gabrielalmir.desafiopicpay.core.contract.Account;
 
 @Entity(name = "customers")
 @Data

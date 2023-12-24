@@ -1,8 +1,8 @@
-package br.com.gabrielalmir.desafiopicpay.domain.customer.entities;
-
-import br.com.gabrielalmir.desafiopicpay.domain.customer.interfaces.Account;
+package br.com.gabrielalmir.desafiopicpay.domain.customer;
 
 import java.math.BigDecimal;
+
+import br.com.gabrielalmir.desafiopicpay.core.contract.Account;
 
 public class CommonCustomer extends Customer {
     @Override
