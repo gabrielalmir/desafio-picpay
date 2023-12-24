@@ -5,9 +5,8 @@ import java.util.UUID;
 
 import br.com.gabrielalmir.desafiopicpay.presentation.enums.TransferType;
 
-public record TransferDto(
-    BigDecimal amount,
-    UUID from,
-    UUID to,
-    TransferType type
-) {}
+public record TransferDto(UUID from, UUID to, BigDecimal amount, TransferType type) {
+    public TransferDto(UUID from, UUID to, BigDecimal amount) {
+        this(from, to, amount, TransferType.WIRE_TRANSFER);
+    }
+}
