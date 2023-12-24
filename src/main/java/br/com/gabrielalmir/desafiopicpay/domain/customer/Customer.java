@@ -11,11 +11,12 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
+import br.com.gabrielalmir.desafiopicpay.core.customer.MoneyTransferBehavior;
 
 @Entity(name = "customers")
 @Table(name = "customers")
 @Data
-public abstract class Customer implements Account {
+public abstract class Customer implements Account, MoneyTransferBehavior {
     @Id
     @GeneratedValue
     private UUID id;
@@ -34,5 +35,7 @@ public abstract class Customer implements Account {
 
     private String password;
     private BigDecimal balance;
+
+    private MoneyTransferBehavior moneyTransferBehavior;
 }
 

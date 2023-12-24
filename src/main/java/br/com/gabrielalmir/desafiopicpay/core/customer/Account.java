@@ -11,8 +11,4 @@ public interface Account {
     String getEmail();
     String getPassword();
     BigDecimal getBalance();
-    boolean canSendMoney();
-    boolean canReceiveMoney();
-    void sendMoney(Account toAccount, BigDecimal amount) throws Exception;
-    void receiveMoney(Account fromAccount, BigDecimal amount) throws Exception;
 }

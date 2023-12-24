@@ -2,40 +2,23 @@ package br.com.gabrielalmir.desafiopicpay.domain.customer;
 
 import java.math.BigDecimal;
 
-import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
-
 public class CommonCustomer extends Customer {
     @Override
-    public boolean canSendMoney() {
+    public boolean canTransferMoney(Customer customer) {
         return true;
     }
 
     @Override
-    public boolean canReceiveMoney() {
-        return true;
-    }
+    public void transferMoney(Customer fromCustomer, Customer toCustomer, BigDecimal amount) {
+        var balanceAfterTransfer = fromCustomer.getBalance().subtract(amount);
 
-    @Override
-    public void sendMoney(Account toAccount, BigDecimal amount) {
-        var balanceAfterTransfer = this.getBalance().subtract(amount);
-
-        if (!this.canSendMoney()) {
-            throw new RuntimeException("Common customer cannot send money");
+        if (!this.canTransferMoney(fromCustomer)) {
+            throw new RuntimeException("Common customer cannot transfer money");
         } else if (balanceAfterTransfer.compareTo(BigDecimal.ZERO) < 0) {
             throw new RuntimeException("Insufficient balance");
         }
 
-        this.setBalance(balanceAfterTransfer);
-    }
-
-    @Override
-    public void receiveMoney(Account fromAccount, BigDecimal amount) {
-        var balanceAfterTransfer = this.getBalance().add(amount);
-
-        if (!this.canReceiveMoney()) {
-            throw new RuntimeException("Common customer cannot receive money");
-        }
-
-        this.setBalance(balanceAfterTransfer);
+        fromCustomer.setBalance(balanceAfterTransfer);
+        toCustomer.setBalance(toCustomer.getBalance().add(amount));
     }
 }
