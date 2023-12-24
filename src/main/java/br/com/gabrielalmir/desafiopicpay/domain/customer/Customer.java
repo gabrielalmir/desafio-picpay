@@ -19,13 +19,16 @@ public abstract class Customer implements Account {
     @GeneratedValue
     private UUID id;
 
+    @Column(length = 20)
     private String firstName;
+
+    @Column(length = 100)
     private String lastName;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 20)
     private String document;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 50)
     private String email;
 
     private String password;
