@@ -1,9 +1,9 @@
-package br.com.gabrielalmir.desafiopicpay.domain.transfer;
+package br.com.gabrielalmir.desafiopicpay.domain.entities.transfer;
 
 import java.math.BigDecimal;
 
 import br.com.gabrielalmir.desafiopicpay.core.transfer.Transaction;
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

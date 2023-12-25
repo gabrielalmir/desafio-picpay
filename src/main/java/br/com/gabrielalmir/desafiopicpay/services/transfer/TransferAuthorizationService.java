@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.gabrielalmir.desafiopicpay.config.transfer.TransferConfig;
-import br.com.gabrielalmir.desafiopicpay.presentation.dtos.TransferAuthorizationDto;
+import br.com.gabrielalmir.desafiopicpay.presentation.dtos.transfer.TransferAuthorizationDto;
 
 @Service
 public class TransferAuthorizationService {

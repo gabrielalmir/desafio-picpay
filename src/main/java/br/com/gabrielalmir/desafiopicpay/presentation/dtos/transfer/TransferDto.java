@@ -1,4 +1,4 @@
-package br.com.gabrielalmir.desafiopicpay.presentation.dtos;
+package br.com.gabrielalmir.desafiopicpay.presentation.dtos.transfer;
 
 import java.math.BigDecimal;
 

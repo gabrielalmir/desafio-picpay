@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.Transfer;
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.TransferToUsers;
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy.TransferStrategy;
-import br.com.gabrielalmir.desafiopicpay.presentation.dtos.TransferDto;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.Transfer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.TransferToUsers;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy.TransferStrategy;
+import br.com.gabrielalmir.desafiopicpay.presentation.dtos.transfer.TransferDto;
 import br.com.gabrielalmir.desafiopicpay.repository.transfer.TransferRepository;
 import br.com.gabrielalmir.desafiopicpay.services.customer.CustomerService;
 

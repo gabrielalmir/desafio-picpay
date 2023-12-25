@@ -1,4 +1,4 @@
-package br.com.gabrielalmir.desafiopicpay.controller;
+package br.com.gabrielalmir.desafiopicpay.controller.customer;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
-import br.com.gabrielalmir.desafiopicpay.presentation.dtos.CreateCustomerDto;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.presentation.dtos.customer.CreateCustomerDto;
 import br.com.gabrielalmir.desafiopicpay.services.customer.CustomerService;
 
 

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy.TransferStrategy;
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy.WireTransferStrategy;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy.TransferStrategy;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy.WireTransferStrategy;
 import lombok.Getter;
 
 @Configuration

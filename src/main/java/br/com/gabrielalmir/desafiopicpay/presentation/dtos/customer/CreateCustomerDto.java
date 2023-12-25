@@ -1,4 +1,4 @@
-package br.com.gabrielalmir.desafiopicpay.presentation.dtos;
+package br.com.gabrielalmir.desafiopicpay.presentation.dtos.customer;
 
 import br.com.gabrielalmir.desafiopicpay.presentation.enums.CustomerType;
 import br.com.gabrielalmir.desafiopicpay.presentation.validators.BrazilDocument;

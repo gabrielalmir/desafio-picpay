@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
-import br.com.gabrielalmir.desafiopicpay.presentation.dtos.CreateCustomerDto;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.presentation.dtos.customer.CreateCustomerDto;
 import br.com.gabrielalmir.desafiopicpay.repository.customer.CustomerRepository;
 
 @Service

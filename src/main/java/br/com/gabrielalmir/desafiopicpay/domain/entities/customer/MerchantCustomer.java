@@ -1,4 +1,4 @@
-package br.com.gabrielalmir.desafiopicpay.domain.customer;
+package br.com.gabrielalmir.desafiopicpay.domain.entities.customer;
 
 public class MerchantCustomer extends CommonCustomer {
     @Override

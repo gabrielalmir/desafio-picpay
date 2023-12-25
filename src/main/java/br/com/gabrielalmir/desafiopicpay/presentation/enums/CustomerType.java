@@ -1,8 +1,8 @@
 package br.com.gabrielalmir.desafiopicpay.presentation.enums;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.CommonCustomer;
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
-import br.com.gabrielalmir.desafiopicpay.domain.customer.MerchantCustomer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.CommonCustomer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.MerchantCustomer;
 
 public enum CustomerType {
     COMMON,

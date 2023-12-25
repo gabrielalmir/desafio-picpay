@@ -1,8 +1,8 @@
-package br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy;
+package br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy;
 
 import java.math.BigDecimal;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
 
 public interface TransferStrategy {
     boolean validateTransaction(Customer fromCustomer, Customer toCustomer, boolean authorized);

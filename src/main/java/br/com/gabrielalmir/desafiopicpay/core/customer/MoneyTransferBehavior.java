@@ -2,7 +2,7 @@ package br.com.gabrielalmir.desafiopicpay.core.customer;
 
 import java.math.BigDecimal;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
 
 public interface MoneyTransferBehavior {
     boolean canTransferMoney(Customer customer);

@@ -1,9 +1,9 @@
-package br.com.gabrielalmir.desafiopicpay.domain.transfer;
+package br.com.gabrielalmir.desafiopicpay.domain.entities.transfer;
 
 import java.math.BigDecimal;
 
-import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
-import br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy.TransferStrategy;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
+import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy.TransferStrategy;
 
 public class TransferToUsers extends Transfer {
     private TransferStrategy transferStrategy;
