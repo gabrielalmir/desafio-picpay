@@ -47,8 +47,11 @@ public class TransferService {
 
         var isAuthorizedTransaction = transferAuthorizationService.authorizeTransaction();
 
-        var transfer = new TransferToUsers(fromCustomer, toCustomer, amount,
-                transferStrategies.get(transferDto.type().name()));
+        var transfer = new TransferToUsers(transferStrategies.get(transferDto.type().name()));
+        transfer.setFromCustomer(fromCustomer);
+        transfer.setToCustomer(toCustomer);
+        transfer.setAmount(amount);
+
         var isValidTransaction = transfer.validateTransaction(isAuthorizedTransaction);
 
         if (!isValidTransaction) {
