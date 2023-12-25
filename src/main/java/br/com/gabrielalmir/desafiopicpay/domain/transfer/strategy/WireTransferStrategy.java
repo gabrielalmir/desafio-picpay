@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
 
-public class InstantaneousTransferStrategy implements TransferStrategy {
+public class WireTransferStrategy implements TransferStrategy {
 
     @Override
     public boolean validateTransaction(Customer fromCustomer, Customer toCustomer, boolean authorized) {
