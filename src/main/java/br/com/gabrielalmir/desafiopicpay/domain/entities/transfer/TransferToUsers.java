@@ -16,6 +16,10 @@ public class TransferToUsers extends Transfer {
 
     @Override
     public void executeTransaction(boolean authorized) throws Exception {
+        if (getFromCustomer().equals(getToCustomer())) {
+            throw new Exception("Invalid transaction: cannot transfer money to yourself");
+        }
+
         transferStrategy.executeTransaction(getFromCustomer(), getToCustomer(), getAmount(), authorized);
         this.setCompleted(true);
     }

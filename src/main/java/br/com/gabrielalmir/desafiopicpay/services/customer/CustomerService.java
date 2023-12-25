@@ -1,6 +1,7 @@
 package br.com.gabrielalmir.desafiopicpay.services.customer;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,10 +17,8 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public Customer findCustomerById(Long id) {
-        return customerRepository
-            .findById(id)
-            .orElseThrow(() -> new RuntimeException("Customer %s not found".formatted(id)));
+    public Optional<Customer> findCustomerById(Long id) {
+        return customerRepository.findCustomerById(id);
     }
 
     public List<Customer> findAllCustomers() {
@@ -37,13 +36,15 @@ public class CustomerService {
 
     public Customer updateCustomerById(Long id, Customer customer) {
         var customerToUpdate = findCustomerById(id);
-        customerToUpdate.setActive(customer.isActive());
-        return customerRepository.save(customerToUpdate);
+        customerToUpdate.ifPresent(customerRepository::save);
+        return customer;
     }
 
     public void deleteCustomerById(Long id) {
-        var customer = findCustomerById(id);
-        customer.setActive(false);
-        customerRepository.save(customer);
+        var customerToDelete = findCustomerById(id);
+        customerToDelete.ifPresent(customer -> {
+            customer.setActive(false);
+            customerRepository.save(customer);
+        });
     }
 }

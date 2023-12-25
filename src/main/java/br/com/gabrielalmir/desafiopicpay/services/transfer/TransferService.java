@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
 import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.Transfer;
 import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.TransferToUsers;
 import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy.TransferStrategy;
@@ -40,9 +41,18 @@ public class TransferService {
                 .orElseThrow(() -> new RuntimeException("Transfer %s not found".formatted(id)));
     }
 
+    public void saveTransfer(Transfer transfer, Customer fromCustomer, Customer toCustomer) {
+        customerService.upsertCustomers(List.of(fromCustomer, toCustomer));
+        transferRepository.save(transfer);
+    }
+
     public void createTransfer(TransferDto transferDto) throws Exception {
-        var fromCustomer = customerService.findCustomerById(transferDto.from());
-        var toCustomer = customerService.findCustomerById(transferDto.to());
+        var optionalFromCustomer = customerService.findCustomerById(transferDto.from());
+        var optionalToCustomer = customerService.findCustomerById(transferDto.to());
+
+        var fromCustomer = optionalFromCustomer.orElseThrow(() -> new Exception("From Customer not found"));
+        var toCustomer = optionalToCustomer.orElseThrow(() -> new Exception("To Customer not found"));
+
         var amount = transferDto.amount();
 
         var isAuthorizedTransaction = transferAuthorizationService.authorizeTransaction();
@@ -59,8 +69,9 @@ public class TransferService {
         }
 
         transfer.executeTransaction(isAuthorizedTransaction);
-        transferRepository.save(transfer);
 
-        customerService.upsertCustomers(List.of(fromCustomer, toCustomer));
+        if (transfer.isCompleted()) {
+            saveTransfer(transfer, fromCustomer, toCustomer);
+        }
     }
 }
