@@ -18,7 +18,10 @@ public class TransferService {
 
     private final Map<String, TransferStrategy> transferStrategies;
 
-    public TransferService(CustomerService customerService, TransferRepository transferRepository, Map<String, TransferStrategy> transferStrategies) {
+    public TransferService(
+        CustomerService customerService, TransferRepository transferRepository,
+        Map<String, TransferStrategy> transferStrategies
+    ) {
         this.customerService = customerService;
         this.transferRepository = transferRepository;
         this.transferStrategies = transferStrategies;
