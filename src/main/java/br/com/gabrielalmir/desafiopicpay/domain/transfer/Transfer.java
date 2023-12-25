@@ -1,7 +1,6 @@
 package br.com.gabrielalmir.desafiopicpay.domain.transfer;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 import br.com.gabrielalmir.desafiopicpay.core.transfer.Transaction;
 import br.com.gabrielalmir.desafiopicpay.domain.customer.Customer;
@@ -9,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 import lombok.Data;
 
 @Entity(name="transfers")
@@ -18,7 +16,7 @@ import lombok.Data;
 public abstract class Transfer implements Transaction {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     private Customer fromCustomer;
     private Customer toCustomer;

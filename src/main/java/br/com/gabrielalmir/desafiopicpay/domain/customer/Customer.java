@@ -1,24 +1,21 @@
 package br.com.gabrielalmir.desafiopicpay.domain.customer;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
-import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
 import br.com.gabrielalmir.desafiopicpay.core.customer.MoneyTransferBehavior;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity(name = "customers")
-@Table(name = "customers")
 @Data
-public abstract class Customer implements Account, MoneyTransferBehavior {
+public abstract class Customer implements MoneyTransferBehavior {
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(length = 20)
     private String firstName;
@@ -33,9 +30,9 @@ public abstract class Customer implements Account, MoneyTransferBehavior {
     private String email;
 
     private String password;
-    private BigDecimal balance;
 
-    private MoneyTransferBehavior moneyTransferBehavior;
+    @Column(precision = 19, scale = 2)
+    private BigDecimal balance;
 
     private boolean active;
 }

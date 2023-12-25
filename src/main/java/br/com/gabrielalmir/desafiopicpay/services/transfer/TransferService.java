@@ -2,7 +2,6 @@ package br.com.gabrielalmir.desafiopicpay.services.transfer;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +34,7 @@ public class TransferService {
         return transferRepository.findAll();
     }
 
-    public Transfer findTransferById(UUID id) {
+    public Transfer findTransferById(Long id) {
         return transferRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Transfer %s not found".formatted(id)));
@@ -59,6 +58,6 @@ public class TransferService {
         transfer.executeTransaction(isAuthorizedTransaction);
         transferRepository.save(transfer);
 
-        customerService.saveCustomers(List.of(fromCustomer, toCustomer));
+        customerService.upsertCustomers(List.of(fromCustomer, toCustomer));
     }
 }
