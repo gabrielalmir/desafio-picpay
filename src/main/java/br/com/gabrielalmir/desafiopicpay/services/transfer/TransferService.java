@@ -15,16 +15,18 @@ import br.com.gabrielalmir.desafiopicpay.services.customer.CustomerService;
 public class TransferService {
     private final CustomerService customerService;
     private final TransferRepository transferRepository;
+    private final TransferAuthorizationService transferAuthorizationService;
 
     private final Map<String, TransferStrategy> transferStrategies;
 
     public TransferService(
-        CustomerService customerService, TransferRepository transferRepository,
-        Map<String, TransferStrategy> transferStrategies
-    ) {
+            CustomerService customerService, TransferRepository transferRepository,
+            Map<String, TransferStrategy> transferStrategies,
+            TransferAuthorizationService transferAuthorizationService) {
         this.customerService = customerService;
         this.transferRepository = transferRepository;
         this.transferStrategies = transferStrategies;
+        this.transferAuthorizationService = transferAuthorizationService;
     }
 
     public void transfer(TransferDto transferDto) throws Exception {
@@ -32,9 +34,10 @@ public class TransferService {
         var toCustomer = customerService.findCustomerById(transferDto.to());
         var amount = transferDto.amount();
 
-        var isAuthorizedTransaction = authorizeTransaction();
+        var isAuthorizedTransaction = transferAuthorizationService.authorizeTransaction();
 
-        var transfer = new TransferToUsers(fromCustomer, toCustomer, amount, transferStrategies.get(transferDto.type().name()));
+        var transfer = new TransferToUsers(fromCustomer, toCustomer, amount,
+                transferStrategies.get(transferDto.type().name()));
         var isValidTransaction = transfer.validateTransaction(isAuthorizedTransaction);
 
         if (!isValidTransaction) {
@@ -45,9 +48,5 @@ public class TransferService {
         transferRepository.save(transfer);
 
         customerService.updateCustomers(List.of(fromCustomer, toCustomer));
-    }
-
-    public boolean authorizeTransaction() throws Exception {
-        return true;
     }
 }
