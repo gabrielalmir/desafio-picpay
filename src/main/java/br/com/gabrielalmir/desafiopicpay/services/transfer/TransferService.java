@@ -2,9 +2,11 @@ package br.com.gabrielalmir.desafiopicpay.services.transfer;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.gabrielalmir.desafiopicpay.domain.transfer.Transfer;
 import br.com.gabrielalmir.desafiopicpay.domain.transfer.TransferToUsers;
 import br.com.gabrielalmir.desafiopicpay.domain.transfer.strategy.TransferStrategy;
 import br.com.gabrielalmir.desafiopicpay.presentation.dtos.TransferDto;
@@ -29,7 +31,17 @@ public class TransferService {
         this.transferAuthorizationService = transferAuthorizationService;
     }
 
-    public void transfer(TransferDto transferDto) throws Exception {
+    public List<Transfer> findAllTransfers() {
+        return transferRepository.findAll();
+    }
+
+    public Transfer findTransferById(UUID id) {
+        return transferRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("Transfer %s not found".formatted(id)));
+    }
+
+    public void createTransfer(TransferDto transferDto) throws Exception {
         var fromCustomer = customerService.findCustomerById(transferDto.from());
         var toCustomer = customerService.findCustomerById(transferDto.to());
         var amount = transferDto.amount();
