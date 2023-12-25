@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class CommonCustomer extends Customer {
     @Override
     public boolean canTransferMoney(Customer customer) {
-        return true;
+        return this.isActive();
     }
 
     @Override

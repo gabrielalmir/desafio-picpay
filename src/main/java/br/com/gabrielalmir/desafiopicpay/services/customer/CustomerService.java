@@ -22,7 +22,17 @@ public class CustomerService {
             .orElseThrow(() -> new RuntimeException("Customer %s not found".formatted(id)));
     }
 
-    public List<Customer> updateCustomers(List<Customer> customers) {
+    public List<Customer> findAllCustomers() {
+        return customerRepository.findAll();
+    }
+
+    public List<Customer> saveCustomers(List<Customer> customers) {
         return customerRepository.saveAll(customers);
+    }
+
+    public void deleteCustomerById(UUID id) {
+        var customer = findCustomerById(id);
+        customer.setActive(false);
+        customerRepository.save(customer);
     }
 }

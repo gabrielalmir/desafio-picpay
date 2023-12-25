@@ -47,6 +47,6 @@ public class TransferService {
         transfer.executeTransaction(isAuthorizedTransaction);
         transferRepository.save(transfer);
 
-        customerService.updateCustomers(List.of(fromCustomer, toCustomer));
+        customerService.saveCustomers(List.of(fromCustomer, toCustomer));
     }
 }

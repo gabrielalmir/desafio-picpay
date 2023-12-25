@@ -1,17 +1,16 @@
 package br.com.gabrielalmir.desafiopicpay.domain.customer;
 
+import java.math.BigDecimal;
+import java.util.UUID;
+
+import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
+import br.com.gabrielalmir.desafiopicpay.core.customer.MoneyTransferBehavior;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-
-import java.math.BigDecimal;
-import java.util.UUID;
-
-import br.com.gabrielalmir.desafiopicpay.core.customer.Account;
-import br.com.gabrielalmir.desafiopicpay.core.customer.MoneyTransferBehavior;
 
 @Entity(name = "customers")
 @Table(name = "customers")
@@ -37,5 +36,7 @@ public abstract class Customer implements Account, MoneyTransferBehavior {
     private BigDecimal balance;
 
     private MoneyTransferBehavior moneyTransferBehavior;
+
+    private boolean active;
 }
 
