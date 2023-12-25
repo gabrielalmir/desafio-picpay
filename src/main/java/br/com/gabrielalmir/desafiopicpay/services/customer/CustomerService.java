@@ -31,7 +31,7 @@ public class CustomerService {
     }
 
     public Customer createCustomer(CreateCustomerDto createCustomerDto) {
-        var customer = createCustomerDto.customerType().createCustomer();
+        var customer = new Customer(createCustomerDto);
         return customerRepository.save(customer);
     }
 

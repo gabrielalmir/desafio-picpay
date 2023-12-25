@@ -13,4 +13,10 @@ public record CreateCustomerDto (
     String email,
     String password,
     CustomerType customerType
-) {}
+) {
+    public CreateCustomerDto {
+        if (customerType == null) {
+            customerType = CustomerType.COMMON;
+        }
+    }
+}
