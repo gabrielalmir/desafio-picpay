@@ -8,7 +8,11 @@ public class WireTransferStrategy implements TransferStrategy {
 
     @Override
     public boolean validateTransaction(Customer fromCustomer, Customer toCustomer, boolean authorized) {
-        return fromCustomer.canTransferMoney(toCustomer) && authorized;
+        var valid = fromCustomer.canTransferMoney(toCustomer) && authorized;
+        var isSameCustomer = fromCustomer.equals(toCustomer);
+        var fromCustomerIsMerchant = fromCustomer.isMerchant();
+
+        return valid && !isSameCustomer && !fromCustomerIsMerchant;
     }
 
     @Override

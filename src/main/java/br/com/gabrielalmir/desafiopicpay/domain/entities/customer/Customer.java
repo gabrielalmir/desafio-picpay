@@ -82,5 +82,9 @@ public class Customer implements MoneyTransferBehavior {
         fromCustomer.setBalance(balanceAfterTransfer);
         toCustomer.setBalance(toCustomer.getBalance().add(amount));
     }
+
+    public boolean isMerchant() {
+        return this.customerType.equals(CustomerType.MERCHANT);
+    }
 }
 
