@@ -22,9 +22,8 @@ public class TransferAuthorizationService {
 
     public boolean authorizeTransaction() throws Exception {
         var response = restTemplate.getForEntity(authorizationServiceUrl, String.class);
-        var mapper = new ObjectMapper();
-        var authorizationResponse = mapper.readValue(response.getBody(), TransferAuthorizationDto.class);
+        var authorizationDto = new ObjectMapper().readValue(response.getBody(), TransferAuthorizationDto.class);
 
-        return authorizationResponse.message().equals(authorizedMessage);
+        return authorizationDto.message().equals(authorizedMessage);
     }
 }

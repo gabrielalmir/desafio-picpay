@@ -4,26 +4,24 @@ import java.math.BigDecimal;
 
 import br.com.gabrielalmir.desafiopicpay.core.transfer.Transaction;
 import br.com.gabrielalmir.desafiopicpay.domain.entities.customer.Customer;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 
-@Entity
-@Table(name="transfers")
+@MappedSuperclass
 @Data
 public abstract class Transfer implements Transaction {
     @Id
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Customer fromCustomer;
-    @ManyToOne(optional = false)
+
+    @ManyToOne
     private Customer toCustomer;
     private BigDecimal amount;
-
     private boolean isCompleted;
 }

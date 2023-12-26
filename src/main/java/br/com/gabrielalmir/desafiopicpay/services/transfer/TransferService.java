@@ -47,17 +47,18 @@ public class TransferService {
     }
 
     public void createTransfer(TransferDto transferDto) throws Exception {
-        var optionalFromCustomer = customerService.findCustomerById(transferDto.from());
-        var optionalToCustomer = customerService.findCustomerById(transferDto.to());
+        var optionalFromCustomer = customerService.findCustomerById(transferDto.getFrom());
+        var optionalToCustomer = customerService.findCustomerById(transferDto.getTo());
 
         var fromCustomer = optionalFromCustomer.orElseThrow(() -> new Exception("From Customer not found"));
         var toCustomer = optionalToCustomer.orElseThrow(() -> new Exception("To Customer not found"));
 
-        var amount = transferDto.amount();
+        var amount = transferDto.getAmount();
 
         var isAuthorizedTransaction = transferAuthorizationService.authorizeTransaction();
 
-        var transfer = new TransferToUsers(transferStrategies.get(transferDto.type().name()));
+        var transferStrategy = transferStrategies.get(transferDto.getType().name());
+        var transfer = new TransferToUsers(transferStrategy);
         transfer.setFromCustomer(fromCustomer);
         transfer.setToCustomer(toCustomer);
         transfer.setAmount(amount);

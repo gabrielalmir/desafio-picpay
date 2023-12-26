@@ -1,9 +1,13 @@
 package br.com.gabrielalmir.desafiopicpay.domain.entities.transfer;
 
 import br.com.gabrielalmir.desafiopicpay.domain.entities.transfer.strategy.TransferStrategy;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="transfers")
 public class TransferToUsers extends Transfer {
-    private TransferStrategy transferStrategy;
+    private transient TransferStrategy transferStrategy;
 
     public TransferToUsers(TransferStrategy transferStrategy) {
         this.transferStrategy = transferStrategy;
