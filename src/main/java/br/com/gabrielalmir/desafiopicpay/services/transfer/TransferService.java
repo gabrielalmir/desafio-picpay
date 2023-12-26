@@ -54,10 +54,9 @@ public class TransferService {
         var toCustomer = optionalToCustomer.orElseThrow(() -> new Exception("To Customer not found"));
 
         var amount = transferDto.getAmount();
-
         var isAuthorizedTransaction = transferAuthorizationService.authorizeTransaction();
-
         var transferStrategy = transferStrategies.get(transferDto.getType().name());
+
         var transfer = new TransferToUsers(transferStrategy);
         transfer.setFromCustomer(fromCustomer);
         transfer.setToCustomer(toCustomer);
